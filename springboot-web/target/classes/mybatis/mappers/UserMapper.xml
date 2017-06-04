@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tedu.mapper.UserMapper">
+    
+
+
+    <select id="findByUsernameAndPassword" resultMap="userRM">
+        select * from
+      (select  user_id ,username,password from user_p) u
+      left join user_info_p i
+      on u.user_id=i.user_info_id
+      where username=#{username} and password=#{password}
+    </select>
+    <resultMap id="userRM" type="User" autoMapping="true">
+        <id column="user_id" property="userId"></id>
+        <association property="userInfo" javaType="UserInfo">
+            <id column="user_info_id" property="userInfoId"></id>
+            <result column="name" property="name"></result>
+            <result column="age" property="age"></result>
+            <result column="sex" property="sex"></result>
+            <result column="phone" property="phone"></result>
+            <result column="qq" property="qQ"></result>
+            <result column="email" property="email"></result>
+
+        </association>
+    </resultMap>
+</mapper>

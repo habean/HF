@@ -1,0 +1,25 @@
+server:
+  port: 8090
+
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@127.0.0.1:1521:XE
+    username: SH1703
+    password: SH1703
+
+  mvc:
+    view:
+     prefix:
+     suffix:
+      
+  http:
+    encoding:
+      force: true
+mybatis:
+  type-aliases-package: com.tedu.pojo
+  config-location: classpath:/mybatis/mybatis-config.xml
+  mapper-locations: classpath:/mybatis/mappers/*.xml
+jpa:
+hibernate:
+ddl-auto: update     //每次每次都会更新表 不会删除原来的数据
